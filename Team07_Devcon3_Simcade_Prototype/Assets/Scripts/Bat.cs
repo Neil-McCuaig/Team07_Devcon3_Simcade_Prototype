@@ -29,13 +29,20 @@ public class Bat : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     { 
         {
-            Vector3 kickDirection = ball.transform.forward;
-            Vector3 batdirection = ball.transform.up;
-            Vector3 force = KickForce * kickDirection;
-            Vector3 batforce = UpForce * batdirection;
-            ball.AddForce(force, ForceMode.Impulse);
-            ball.AddForce(batforce, ForceMode.Impulse);
+            if (Input.GetKeyDown(KickKey))
+        {
+            DoKickBall = true;
         }
+            if (DoKickBall == true)
+            {
+                Vector3 kickDirection = ball.transform.forward;
+                Vector3 batdirection = ball.transform.up;
+                Vector3 force = KickForce * kickDirection;
+                Vector3 batforce = UpForce * batdirection;
+                ball.AddForce(force, ForceMode.Impulse);
+                ball.AddForce(batforce, ForceMode.Impulse);
+            }
+            }
         }
 
 
