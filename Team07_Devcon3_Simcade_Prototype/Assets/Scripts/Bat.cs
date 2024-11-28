@@ -26,7 +26,7 @@ public class Bat : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     { 
         {
             if (Input.GetKeyDown(KickKey))
