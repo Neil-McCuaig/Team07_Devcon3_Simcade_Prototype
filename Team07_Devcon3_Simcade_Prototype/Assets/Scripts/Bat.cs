@@ -4,48 +4,39 @@ using UnityEngine;
 
 public class Bat : MonoBehaviour
 {
-    [field: SerializeField] public Rigidbody SoccerBallRB { get; private set; }
-    [field: SerializeField] public float KickForce { get; private set; } = 40;
-    [field: SerializeField] public float KickSpinForce { get; private set; } = 1;
+    [field: SerializeField] public Rigidbody ball { get; private set; }
+    [field: SerializeField] public float KickForce { get; private set; } = 20;
+    [field: SerializeField] public float UpForce { get; private set; } = 15;
+    [field: SerializeField] public float KickSpinForce { get; private set; } = 2;
     [field: SerializeField] public bool DoKickBall { get; private set; }
     [field: SerializeField] public KeyCode KickKey { get; private set; } = KeyCode.B;
 
 
     private void Awake()
     {
-        if (SoccerBallRB == null)
+        if (ball == null)
         {
-            string msg = $"Missing Component {nameof(Rigidbody)} {nameof(SoccerBallRB)}.";
+            string msg = $"Missing Component {nameof(Rigidbody)} {nameof(ball)}.";
             throw new MissingComponentException(msg);
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KickKey))
-        {
-            DoKickBall = true;
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     { 
         {
-            if (!DoKickBall)
-                return;
-            DoKickBall = false;
-
-            Vector3 kickDirection = SoccerBallRB.transform.forward;
+            Vector3 kickDirection = ball.transform.forward;
+            Vector3 batdirection = ball.transform.up;
             Vector3 force = KickForce * kickDirection;
-            SoccerBallRB.AddForce(force, ForceMode.Impulse);
+            Vector3 batforce = UpForce * batdirection;
+            ball.AddForce(force, ForceMode.Impulse);
+            ball.AddForce(batforce, ForceMode.Impulse);
+        }
         }
 
 
     }
-
-    private void Reset()
-    {
-        if (SoccerBallRB == null)
-            SoccerBallRB = GetComponent<Rigidbody>();
-    }
-}
