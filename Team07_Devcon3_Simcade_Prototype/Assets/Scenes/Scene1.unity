@@ -1029,7 +1029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce0f55248fecd54a88a0d4b786cda37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wintext: {fileID: 996906845}
+  winText: {fileID: 996906845}
+  loseText: {fileID: 589931277}
+  knockOutCount: 0
+  strikeCount: 0
 --- !u!65 &687511965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2037,7 +2040,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce0f55248fecd54a88a0d4b786cda37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wintext: {fileID: 996906845}
+  winText: {fileID: 996906845}
+  loseText: {fileID: 589931277}
+  knockOutCount: 0
+  strikeCount: 0
 --- !u!65 &1220367778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2242,7 +2248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce0f55248fecd54a88a0d4b786cda37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wintext: {fileID: 589931277}
+  winText: {fileID: 0}
+  loseText: {fileID: 0}
+  knockOutCount: 0
+  strikeCount: 0
 --- !u!1 &1277845123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,7 +2891,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce0f55248fecd54a88a0d4b786cda37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wintext: {fileID: 589931277}
+  winText: {fileID: 996906845}
+  loseText: {fileID: 589931277}
+  knockOutCount: 0
+  strikeCount: 0
 --- !u!65 &1841586398
 BoxCollider:
   m_ObjectHideFlags: 0

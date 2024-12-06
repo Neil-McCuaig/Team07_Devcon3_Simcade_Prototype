@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class WinCondition : MonoBehaviour
 {
-    public GameObject wintext;    
+    public GameObject winText;
+    public GameObject loseText;
+    public int knockOutCount;
+    public int strikeCount;
     // Start is called before the first frame update
     void Start()
     {
-        wintext.SetActive(false);
+        knockOutCount = 0;
+        strikeCount = 0;
+        winText.SetActive(false);
+        loseText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,6 +25,21 @@ public class WinCondition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        wintext.SetActive(true);
+        if (other.gameObject.name == "Boarder")
+        {
+            knockOutCount++;
+            if (knockOutCount == 3)
+            {
+                winText.SetActive(true);
+            }
+        }
+        else if (other.gameObject.name == "Missed Ball Collision")
+        {
+            strikeCount++;
+            if(strikeCount == 3)
+            {
+                loseText.SetActive(true);
+            }
+        }
     }
 }
