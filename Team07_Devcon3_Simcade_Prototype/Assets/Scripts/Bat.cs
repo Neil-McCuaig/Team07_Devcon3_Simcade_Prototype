@@ -10,6 +10,7 @@ public class Bat : MonoBehaviour
     [field: SerializeField] public float KickSpinForce { get; private set; } = 2;
     [field: SerializeField] public bool DoKickBall { get; private set; }
     [field: SerializeField] public KeyCode KickKey { get; private set; } = KeyCode.B;
+    [field: SerializeField] public int batCount = 0;
 
 
     private void Awake()
@@ -23,16 +24,17 @@ public class Bat : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     void OnTriggerStay(Collider other)
-    { 
+    {
         {
-            if (Input.GetKeyDown(KickKey))
-        {
-            DoKickBall = true;
-        }
+            if (Input.GetKeyDown(KickKey) && batCount == 0)
+            {
+                DoKickBall = true;
+                batCount++;
+            }
             if (DoKickBall == true)
             {
                 Vector3 kickDirection = ball.transform.forward;
@@ -41,9 +43,9 @@ public class Bat : MonoBehaviour
                 Vector3 batforce = UpForce * batdirection;
                 ball.AddForce(force, ForceMode.Impulse);
                 ball.AddForce(batforce, ForceMode.Impulse);
-            }
+                DoKickBall = false;
             }
         }
-
-
     }
+}
+

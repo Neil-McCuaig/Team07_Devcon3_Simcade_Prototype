@@ -25,21 +25,25 @@ public class WinCondition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Boarder")
+        if (other.gameObject.name == "Sphere")
         {
-            knockOutCount++;
-            if (knockOutCount == 3)
+            if (this.gameObject.name == "Boarder")
             {
-                winText.SetActive(true);
+                knockOutCount++;
+                if (knockOutCount == 3)
+                {
+                    winText.SetActive(true);
+                }
+            }
+            else if (this.gameObject.name == "Missed Ball Collision")
+            {
+                strikeCount++;
+                if (strikeCount == 3)
+                {
+                    loseText.SetActive(true);
+                }
             }
         }
-        else if (other.gameObject.name == "Missed Ball Collision")
-        {
-            strikeCount++;
-            if(strikeCount == 3)
-            {
-                loseText.SetActive(true);
-            }
-        }
+        
     }
 }
