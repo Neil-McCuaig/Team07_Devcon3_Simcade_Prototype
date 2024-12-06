@@ -12,8 +12,11 @@ public class SoccerBallKick : MonoBehaviour
     Vector3 originalPosition;
     [field: SerializeField] public KeyCode ResetKey { get; private set; } = KeyCode.U;
 
+    [field: SerializeField] public bool ballMobile;
+
     private void Awake()
     {
+        ballMobile = false;
         originalPosition = gameObject.transform.position;
         if (SoccerBallRB == null)
         {
@@ -28,6 +31,7 @@ public class SoccerBallKick : MonoBehaviour
         {
             DoKickBall = true;
             ballCount++;
+            ballMobile = true;
         }
 
         if (Input.GetKeyDown(ResetKey))
@@ -60,6 +64,7 @@ public class SoccerBallKick : MonoBehaviour
             //SoccerBallRB.AddForce(stopForce, ForceMode.Impulse);
             SoccerBallRB.velocity = Vector3.zero;
             SoccerBallRB.angularVelocity = Vector3.zero;
+            ballMobile = false;
         }
         else if (other.gameObject.name == "Missed Ball Collision")
         {
@@ -70,6 +75,7 @@ public class SoccerBallKick : MonoBehaviour
             //SoccerBallRB.AddForce(stopForce, ForceMode.Impulse);
             SoccerBallRB.velocity = Vector3.zero;
             SoccerBallRB.angularVelocity = Vector3.zero;
+            ballMobile = false;
         }
     }
 
