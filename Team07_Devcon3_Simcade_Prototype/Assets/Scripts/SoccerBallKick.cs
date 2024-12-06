@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoccerBallKick : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SoccerBallKick : MonoBehaviour
     [field: SerializeField] public KeyCode KickKey { get; private set; } = KeyCode.Space;
     [field: SerializeField] public int ballCount = 0;
     Vector3 originalPosition;
+    [field: SerializeField] public KeyCode ResetKey { get; private set; } = KeyCode.U;
 
     private void Awake()
     {
@@ -22,10 +24,15 @@ public class SoccerBallKick : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KickKey) == ballCount <= 3)
+        if (Input.GetKeyDown(KickKey) && ballCount <= 3)
         {
             DoKickBall = true;
             ballCount++;
+        }
+
+        if (Input.GetKeyDown(ResetKey))
+        {
+            SceneManager.LoadScene("Scene1");
         }
     }
 
@@ -38,7 +45,7 @@ public class SoccerBallKick : MonoBehaviour
         Vector3 kickDirection = SoccerBallRB.transform.forward;
         Vector3 force = KickForce * kickDirection;
         SoccerBallRB.AddForce(force, ForceMode.Impulse);
-
+        SoccerBallRB.useGravity = true;
 
     }
 
@@ -46,17 +53,23 @@ public class SoccerBallKick : MonoBehaviour
     {
         if(other.gameObject.name == "Boarder")
         {
+            SoccerBallRB.useGravity = false;
             transform.position = originalPosition;
-            Vector3 stopDirection = -SoccerBallRB.transform.forward;
-            Vector3 stopForce = KickForce * stopDirection;
-            SoccerBallRB.AddForce(stopForce, ForceMode.Impulse);
+            //Vector3 stopDirection = -SoccerBallRB.transform.forward;
+            //Vector3 stopForce = KickForce * stopDirection;
+            //SoccerBallRB.AddForce(stopForce, ForceMode.Impulse);
+            SoccerBallRB.velocity = Vector3.zero;
+            SoccerBallRB.angularVelocity = Vector3.zero;
         }
         else if (other.gameObject.name == "Missed Ball Collision")
         {
+            SoccerBallRB.useGravity = false;
             transform.position = originalPosition;
-            Vector3 stopDirection = -SoccerBallRB.transform.forward;
-            Vector3 stopForce = KickForce * stopDirection;
-            SoccerBallRB.AddForce(stopForce, ForceMode.Impulse);
+            //Vector3 stopDirection = -SoccerBallRB.transform.forward;
+            //Vector3 stopForce = KickForce * stopDirection;
+            //SoccerBallRB.AddForce(stopForce, ForceMode.Impulse);
+            SoccerBallRB.velocity = Vector3.zero;
+            SoccerBallRB.angularVelocity = Vector3.zero;
         }
     }
 
