@@ -8,7 +8,9 @@ public class SoccerBallKick : MonoBehaviour
     [field: SerializeField] public float KickSpinForce { get; private set; } = 1;
     [field: SerializeField] public bool DoKickBall { get; private set; }
     [field: SerializeField] public KeyCode KickKey { get; private set; } = KeyCode.Space;
+
     [field: SerializeField] public int ballCount = 0;
+
     Vector3 originalPosition;
     [field: SerializeField] public KeyCode ResetKey { get; private set; } = KeyCode.U;
 

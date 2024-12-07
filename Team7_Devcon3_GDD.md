@@ -2,7 +2,7 @@
 
 # **Overview:**
 
-Our game is a simple baseball simulation game. One player is the pitcher and the other is the batter. The pitcher presses space to throw the ball and the batter must time his swing correctly by using B to hit the back back. If they miss, they lose and if they hit the ball, they get a home run and win.
+Our game is a simple baseball simulation game. One player is the pitcher and the other is the batter. The pitcher presses space to throw the ball and the batter must time his swing correctly by using B to hit the back back. If they miss three times, they lose and if they hit the ball three times, they get a home run and win.
 
 **Objective Statement**   
 The question we want to answer with our prototype is the following: How can we use the unity physics engine to create a quick and fast gameplay experience.
@@ -35,12 +35,13 @@ Aluminium Bat:
 
 # **Mechanics:**
 
-The main mechanics of our game involve timing a button press  correctly in order to get a home run to win the game. We wanted to mix a timing mechanic with the unity physics engine in order to get a quick and effective fast paced game.
+The main mechanics of our game involve timing a button press correctly in order to get a home run to win the game. We wanted to mix a timing mechanic with the unity physics engine in order to get a quick and effective fast paced game.
 
 # **Controls:** 
 
 Space to have the pitcher begin to throw the ball.  
-B to hit with the bat.
+B to hit with the bat.  
+U to reset the level.
 
 # **Interface:**
 
